@@ -135,7 +135,7 @@ function showUserDataForm() {
 }
 
 // Odoslanie údajov do databázy
-function submitToDatabase() {
+async function submitToDatabase() {
     const userName = document.getElementById('userName').value;
     const userEmail = document.getElementById('userEmail').value;
     const gdprConsent = document.getElementById('gdprConsent').checked;
@@ -145,50 +145,38 @@ function submitToDatabase() {
         return;
     }
 
-    // Vytvor skrytý formulár pre odoslanie do Google Forms
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSddHRagNwxXd8u0AaNFSG8RtLoEmVrvJ8OxBdSaWbgM4hQIsw/formResponse';
-    form.target = 'hidden_iframe';
-    
-    // Funkcia na pridanie skrytého inputu
-    function addInput(name, value) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-    }
-    
-    // Pridaj všetky dáta
-    addInput('entry.1840613551', userName);
-    addInput('entry.632660338', userEmail);
-    addInput('entry.1471686555', calculatedStone);
-    addInput('entry.864475016', answers.q1);
-    addInput('entry.1642637039', answers.q2);
-    addInput('entry.69674263', answers.q3);
-    addInput('entry.388840279', answers.q4);
-    
-    // Pridaj formulár do stránky a odošli
-    document.body.appendChild(form);
-    
-    // Vytvor skrytý iframe pre odoslanie
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    
-    // Po odoslaní zobraz výsledok
-    iframe.onload = function() {
-        console.log('Dáta úspešne odoslané do Google Forms!');
-        showResult(calculatedStone, userName, userEmail);
-        // Vyčisti
-        document.body.removeChild(form);
-        document.body.removeChild(iframe);
+    // Priprav dáta
+    const data = {
+        name: userName,
+        email: userEmail,
+        result: calculatedStone,
+        q1: answers.q1,
+        q2: answers.q2,
+        q3: answers.q3,
+        q4: answers.q4
     };
-    
-    // Odošli formulár
-    form.submit();
+
+    try {
+        // Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybVxpayPfPpNyT20pVj3eNtwCJEegRhAPwe3HaPS67PUmEfVT6uRxLLKUx3hM9cusv/exec';
+        
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        console.log('Dáta úspešne odoslané!');
+        showResult(calculatedStone, userName, userEmail);
+        
+    } catch (error) {
+        console.error('Chyba:', error);
+        // Aj pri chybe zobraz výsledok
+        showResult(calculatedStone, userName, userEmail);
+    }
 }
 
 // Zobrazenie výsledku
