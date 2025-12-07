@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ktorý kameň je tvoj príbeh?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>✨ Ktorý kameň je tvoj príbeh?</h1>
+            <p class="subtitle">Objav drahokam, ktorý vystihuje tvoju energiu, štýl a ženskú esenciu.<br>
+            Vyplň krátky test a automaticky sa zaradíš do tomboly Panak's × AnnaeS.</p>
+        </header>
+
+        <!-- DOTAZNÍK -->
+        <form id="quizForm">
+            <!-- OTÁZKA 1 -->
+            <section class="question-section">
+                <h2>Tvoj štýl</h2>
+                <p class="question-text">Ako by si opísala svoj módny vibe?</p>
+                <div class="options-grid">
+                    <button type="button" class="option-btn" data-question="q1" data-value="nadcasova">
+                        Nadčasová elegancia
+                    </button>
+                    <button type="button" class="option-btn" data-question="q1" data-value="minimalisticka">
+                        Minimalistický chic
+                    </button>
+                    <button type="button" class="option-btn" data-question="q1" data-value="romanticka">
+                        Romantická jemnosť
+                    </button>
+                    <button type="button" class="option-btn" data-question="q1" data-value="odvazna">
+                        Odvážna a výrazná
+                    </button>
+                    <button type="button" class="option-btn" data-question="q1" data-value="mysteriozna">
+                        Mysteriózna a sofistikovaná
+                    </button>
+                    <button type="button" class="option-btn" data-question="q1" data-value="moderna">
+                        Moderná, jemne glamour
+                    </button>
+                </div>
+            </section>
+
+            <!-- OTÁZKA 2 -->
+            <section class="question-section">
+                <h2>Tvoja energia</h2>
+                <p class="question-text">Aká atmosféra ťa najlepšie vystihuje?</p>
+                <div class="options-grid">
+                    <button type="button" class="option-btn" data-question="q2" data-value="jasna">
+                        Jasná a žiarivá
+                    </button>
+                    <button type="button" class="option-btn" data-question="q2" data-value="hlbava">
+                        Hĺbavá a pokojná
+                    </button>
+                    <button type="button" class="option-btn" data-question="q2" data-value="jemna">
+                        Jemná a harmonická
+                    </button>
+                    <button type="button" class="option-btn" data-question="q2" data-value="temna">
+                        Temná, no krásna
+                    </button>
+                    <button type="button" class="option-btn" data-question="q2" data-value="zvodna">
+                        Zvodná a magická
+                    </button>
+                    <button type="button" class="option-btn" data-question="q2" data-value="laskava">
+                        Láskavá a nežná
+                    </button>
+                </div>
+            </section>
+
+            <!-- OTÁZKA 3 -->
+            <section class="question-section">
+                <h2>Tvoja vôňa</h2>
+                <p class="question-text">Ktorý typ vône intuitívne uprednostňuješ?</p>
+                <div class="options-grid">
+                    <button type="button" class="option-btn" data-question="q3" data-value="kvetinova">
+                        Kvetinová
+                    </button>
+                    <button type="button" class="option-btn" data-question="q3" data-value="citrusova">
+                        Citrusovo svieža
+                    </button>
+                    <button type="button" class="option-btn" data-question="q3" data-value="drevita">
+                        Drevito teplá
+                    </button>
+                    <button type="button" class="option-btn" data-question="q3" data-value="orientalna">
+                        Orientálna / ambrová
+                    </button>
+                    <button type="button" class="option-btn" data-question="q3" data-value="cista">
+                        Čistá „skin scent"
+                    </button>
+                </div>
+            </section>
+
+            <!-- OTÁZKA 4 -->
+            <section class="question-section">
+                <h2>Intuitívny výber</h2>
+                <p class="question-text">Ktorý kameň ťa osloví ako prvý?</p>
+                <div class="image-options-grid">
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="diamant">
+                        <div class="image-placeholder">💎</div>
+                        <span>Diamant</span>
+                    </button>
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="topaz">
+                        <div class="image-placeholder">💙</div>
+                        <span>London Blue Topaz</span>
+                    </button>
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="biela-perla">
+                        <div class="image-placeholder">🦪</div>
+                        <span>Biela perla</span>
+                    </button>
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="cierna-perla">
+                        <div class="image-placeholder">⚫</div>
+                        <span>Čierna perla</span>
+                    </button>
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="tanzanit">
+                        <div class="image-placeholder">💜</div>
+                        <span>Tanzanit</span>
+                    </button>
+                    <button type="button" class="image-option-btn" data-question="q4" data-value="morganit">
+                        <div class="image-placeholder">🩷</div>
+                        <span>Morganit</span>
+                    </button>
+                </div>
+            </section>
+
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>Pokračovať na vyhodnotenie</button>
+        </form>
+
+        <!-- FORMULÁR NA ÚDAJE -->
+        <div id="userDataForm" class="user-data-section" style="display: none;">
+            <div class="user-data-card">
+                <h2>Posledný krok</h2>
+                <p class="user-data-subtitle">Vyplň svoje údaje pre zaradenie do tomboly</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="userName">Meno a priezvisko *</label>
+                        <input type="text" id="userName" name="userName" required placeholder="Napríklad: Jana Nováková">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail">Email *</label>
+                        <input type="email" id="userEmail" name="userEmail" required placeholder="tvoj@email.sk">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="gdprConsent" required>
+                            <span>Súhlasím so spracovaním osobných údajov pre účely tomboly *</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="finalSubmitBtn">Odoslať a zobraziť výsledok</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- VÝSLEDKY -->
+        <div id="results" class="results-section" style="display: none;">
+            <!-- DIAMANT -->
+            <div class="result-card" data-result="diamant">
+                <div class="result-icon">💎</div>
+                <h2>Tvoj kameň je DIAMANT</h2>
+                <p>Svetlo, ktoré nosíš v sebe, je tvoj podpis.<br>
+                Silná, jasná, nezameniteľná.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <!-- LONDON BLUE TOPAZ -->
+            <div class="result-card" data-result="topaz">
+                <div class="result-icon">💙</div>
+                <h2>Tvoj kameň je LONDON BLUE TOPAZ</h2>
+                <p>Pokoj, elegancia a hĺbka – to je tvoja esencia.<br>
+                Tvoj štýl hovorí potichu, ale zostáva.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <!-- BIELA PERLA -->
+            <div class="result-card" data-result="biela-perla">
+                <div class="result-icon">🦪</div>
+                <h2>Tvoj kameň je BIELA PERLA</h2>
+                <p>Jemnosť, ladnosť a nadčasová krása.<br>
+                Si harmónia, ktorá upokojuje.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <!-- ČIERNA PERLA -->
+            <div class="result-card" data-result="cierna-perla">
+                <div class="result-icon">⚫</div>
+                <h2>Tvoj kameň je ČIERNA PERLA</h2>
+                <p>Tajomstvo, sila a charizma, ktorá pritiahne pohľad.<br>
+                Tvoja krása má hĺbku.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <!-- TANZANIT -->
+            <div class="result-card" data-result="tanzanit">
+                <div class="result-icon">💜</div>
+                <h2>Tvoj kameň je TANZANIT</h2>
+                <p>Zmyselnosť, magnetická energia a výnimočný pôvab — to si ty.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <!-- MORGANIT -->
+            <div class="result-card" data-result="morganit">
+                <div class="result-icon">🩷</div>
+                <h2>Tvoj kameň je MORGANIT</h2>
+                <p>Nežnosť, láska a jemná sila.<br>
+                Si žena, ktorá žiari zvnútra.<br>
+                Si zaradená do tomboly Panak's × AnnaeS.</p>
+            </div>
+
+            <div class="thank-you-message">
+                <h3>Ďakujeme!</h3>
+                <p>Tvoj výsledok sme uložili.<br>
+                Si oficiálne zapojená do tomboly Panak's × AnnaeS.<br>
+                Výherkyňu žrebujeme počas eventu.</p>
+                <div class="saved-data">
+                    <p><strong>Tvoje údaje:</strong></p>
+                    <p id="displayName"></p>
+                    <p id="displayEmail"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
