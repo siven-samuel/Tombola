@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Kontrola, či sú všetky otázky zodpovedané
 function checkAllAnswered() {
     const submitBtn = document.getElementById('submitBtn');
-    const allAnswered = Object.values(answers).every(answer => answer !== null);
+    // Kontrola všetkých 6 otázok
+    const allAnswered = answers.q1 && answers.q2 && answers.q3 && answers.q4 && answers.q5 && answers.q6;
     submitBtn.disabled = !allAnswered;
 }
 
