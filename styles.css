@@ -28,6 +28,22 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(1.1);
+}
+
 .header h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -118,6 +134,14 @@ body {
 
 .image-placeholder {
     font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.stone-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
@@ -270,8 +294,8 @@ body {
 
 .result-card {
     display: none;
-    text-align: center;
-    padding: 50px 30px;
+    text-align: left;
+    padding: 50px 40px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     backdrop-filter: blur(10px);
@@ -283,21 +307,89 @@ body {
     display: block;
 }
 
+.result-stone-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
 .result-icon {
     font-size: 5em;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .result-card h2 {
     font-size: 2em;
     margin-bottom: 20px;
     color: #ffd700;
+    text-align: center;
 }
 
-.result-card p {
-    font-size: 1.2em;
+.result-intro {
+    font-size: 1.1em;
     line-height: 1.8;
     color: #e0e0e0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.result-details {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.result-details h3 {
+    font-size: 1.3em;
+    color: #ffd700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.result-details h3:first-child {
+    margin-top: 0;
+}
+
+.result-details p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.result-footer {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #e0e0e0;
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+
+.shop-link {
+    display: block;
+    text-align: center;
+    padding: 15px 30px;
+    background: rgba(255, 215, 0, 0.2);
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.shop-link:hover {
+    background: rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
 }
 
 .thank-you-message {
@@ -334,6 +426,10 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    .logo {
+        height: 45px;
+    }
+
     .header h1 {
         font-size: 1.8em;
     }
@@ -348,6 +444,10 @@ body {
 
     .image-options-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stone-image {
+        height: 120px;
     }
 
     .question-section h2 {

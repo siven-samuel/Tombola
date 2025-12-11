@@ -3,7 +3,9 @@ const answers = {
     q1: null,
     q2: null,
     q3: null,
-    q4: null
+    q4: null,
+    q5: null,
+    q6: null
 };
 
 let calculatedStone = '';
@@ -56,69 +58,81 @@ function checkAllAnswered() {
 
 // Výpočet výsledku
 function calculateResult() {
-    const scores = {
-        diamant: 0,
-        topaz: 0,
-        'biela-perla': 0,
-        'cierna-perla': 0,
-        tanzanit: 0,
-        morganit: 0
-    };
-
-    // LOGIKA PRE DIAMANT
-    if (answers.q1 === 'nadcasova') scores.diamant += 2;
-    if (answers.q2 === 'jasna') scores.diamant += 2;
-    if (answers.q3 === 'kvetinova' || answers.q3 === 'cista') scores.diamant += 1;
-    if (answers.q4 === 'diamant') scores.diamant += 3;
-
-    // LOGIKA PRE LONDON BLUE TOPAZ
-    if (answers.q1 === 'minimalisticka') scores.topaz += 2;
-    if (answers.q2 === 'hlbava') scores.topaz += 2;
-    if (answers.q3 === 'citrusova' || answers.q3 === 'drevita') scores.topaz += 1;
-    if (answers.q4 === 'topaz') scores.topaz += 3;
-
-    // LOGIKA PRE BIELA PERLA
-    if (answers.q1 === 'romanticka') scores['biela-perla'] += 2;
-    if (answers.q2 === 'jemna') scores['biela-perla'] += 2;
-    if (answers.q3 === 'kvetinova') scores['biela-perla'] += 1;
-    if (answers.q4 === 'biela-perla') scores['biela-perla'] += 3;
-
-    // LOGIKA PRE ČIERNA PERLA
-    if (answers.q1 === 'mysteriozna') scores['cierna-perla'] += 2;
-    if (answers.q2 === 'temna') scores['cierna-perla'] += 2;
-    if (answers.q3 === 'orientalna') scores['cierna-perla'] += 1;
-    if (answers.q4 === 'cierna-perla') scores['cierna-perla'] += 3;
-
-    // LOGIKA PRE TANZANIT
-    if (answers.q1 === 'odvazna') scores.tanzanit += 2;
-    if (answers.q2 === 'zvodna') scores.tanzanit += 2;
-    if (answers.q3 === 'orientalna' || answers.q3 === 'drevita') scores.tanzanit += 1;
-    if (answers.q4 === 'tanzanit') scores.tanzanit += 3;
-
-    // LOGIKA PRE MORGANIT
-    if (answers.q1 === 'moderna') scores.morganit += 2;
-    if (answers.q2 === 'laskava') scores.morganit += 2;
-    if (answers.q3 === 'kvetinova' || answers.q3 === 'cista') scores.morganit += 1;
-    if (answers.q4 === 'morganit') scores.morganit += 3;
-
-    // Nájdi kameň s najvyšším skóre
-    let maxScore = 0;
-    let resultStone = '';
-
-    for (const [stone, score] of Object.entries(scores)) {
-        if (score > maxScore) {
-            maxScore = score;
-            resultStone = stone;
-        }
+    // Kontrola presných kombinácií podľa tabuliek
+    
+    // DIAMANT - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'nadcasova' && answers.q2 === 'jasna' && answers.q3 === 'kvetinova' && answers.q5 === 'prilakat') ||
+        (answers.q1 === 'nadcasova' && answers.q2 === 'jasna' && answers.q3 === 'cista' && answers.q5 === 'elegantne') ||
+        (answers.q1 === 'moderna' && answers.q2 === 'jasna' && answers.q3 === 'kvetinova' && answers.q5 === 'luxus') ||
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'jasna' && answers.q3 === 'cista' && answers.q5 === 'elegantne')
+    ) {
+        calculatedStone = 'diamant';
+        return;
     }
 
-    // Ak žiadny kameň nebol vybraný (všetky skóre sú 0), použij intuitívny výber
-    if (maxScore === 0) {
-        resultStone = answers.q4;
+    // LONDON BLUE TOPAZ - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'hlbava' && answers.q3 === 'citrusova' && answers.q5 === 'elegantne') ||
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'hlbava' && answers.q3 === 'drevita' && answers.q5 === 'jemne') ||
+        (answers.q1 === 'nadcasova' && answers.q2 === 'hlbava' && answers.q3 === 'drevita' && answers.q5 === 'elegantne') ||
+        (answers.q1 === 'mysteriozna' && answers.q2 === 'hlbava' && answers.q3 === 'citrusova' && answers.q5 === 'elegantne')
+    ) {
+        calculatedStone = 'topaz';
+        return;
     }
 
-    // Ulož výsledok
-    calculatedStone = resultStone;
+    // BIELA PERLA - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'romanticka' && answers.q2 === 'jemna' && answers.q3 === 'kvetinova') ||
+        (answers.q1 === 'romanticka' && answers.q2 === 'laskava' && answers.q3 === 'kvetinova' && answers.q5 === 'jemne') ||
+        (answers.q1 === 'nadcasova' && answers.q2 === 'jemna' && answers.q3 === 'kvetinova' && answers.q5 === 'elegantne') ||
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'jemna' && answers.q3 === 'kvetinova' && answers.q5 === 'jemne')
+    ) {
+        calculatedStone = 'biela-perla';
+        return;
+    }
+
+    // ČIERNA PERLA - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'mysteriozna' && answers.q2 === 'temna' && answers.q3 === 'orientalna' && answers.q5 === 'tajomstvo') ||
+        (answers.q1 === 'mysteriozna' && answers.q2 === 'zvodna' && answers.q3 === 'orientalna' && answers.q5 === 'luxus') ||
+        (answers.q1 === 'odvazna' && answers.q2 === 'temna' && answers.q3 === 'orientalna' && answers.q5 === 'tajomstvo') ||
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'temna' && answers.q3 === 'orientalna' && answers.q5 === 'tajomstvo')
+    ) {
+        calculatedStone = 'cierna-perla';
+        return;
+    }
+
+    // TANZANIT - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'odvazna' && answers.q2 === 'zvodna' && answers.q3 === 'orientalna' && answers.q5 === 'prilakat') ||
+        (answers.q1 === 'odvazna' && answers.q2 === 'zvodna' && answers.q3 === 'drevita' && answers.q5 === 'luxus') ||
+        (answers.q1 === 'mysteriozna' && answers.q2 === 'zvodna' && answers.q3 === 'orientalna' && answers.q5 === 'luxus') ||
+        (answers.q1 === 'moderna' && answers.q2 === 'zvodna' && answers.q3 === 'orientalna' && answers.q5 === 'prilakat')
+    ) {
+        calculatedStone = 'tanzanit';
+        return;
+    }
+
+    // MORGANIT - Kombinačné pravidlá
+    if (
+        (answers.q1 === 'moderna' && answers.q2 === 'laskava' && answers.q3 === 'kvetinova') ||
+        (answers.q1 === 'romanticka' && answers.q2 === 'laskava' && answers.q3 === 'kvetinova' && answers.q5 === 'jemne') ||
+        (answers.q1 === 'romanticka' && answers.q2 === 'jemna' && answers.q3 === 'cista') ||
+        (answers.q1 === 'minimalisticka' && answers.q2 === 'laskava' && answers.q3 === 'kvetinova' && answers.q5 === 'elegantne')
+    ) {
+        calculatedStone = 'morganit';
+        return;
+    }
+
+    // Ak žiadna kombinácia nepasuje, použi intuitívny výber (q6)
+    if (answers.q6) {
+        calculatedStone = answers.q6;
+    } else {
+        // Fallback - default diamant
+        calculatedStone = 'diamant';
+    }
 }
 
 // Zobrazenie formulára pre kontaktné údaje
@@ -153,7 +167,9 @@ async function submitToDatabase() {
         q1: answers.q1,
         q2: answers.q2,
         q3: answers.q3,
-        q4: answers.q4
+        q4: answers.q4,
+        q5: answers.q5,
+        q6: answers.q6
     };
 
     try {
