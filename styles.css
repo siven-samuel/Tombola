@@ -137,12 +137,16 @@ body {
     margin-bottom: 10px;
 }
 
+img.stone-image {
+    max-width: 100%;
+}
 .stone-image {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    height: 120px;
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .image-option-btn span {
@@ -309,7 +313,7 @@ body {
 
 .result-stone-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
     margin: 0 auto 20px auto;
     display: block;
