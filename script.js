@@ -168,6 +168,7 @@ async function submitToDatabase() {
 
     try {
         // Google Apps Script Web App URL
+        // DÔLEŽITÉ: Po nasadení nového scriptu z google-apps-script.gs, vlož sem novú URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybVxpayPfPpNyT20pVj3eNtwCJEegRhAPwe3HaPS67PUmEfVT6uRxLLKUx3hM9cusv/exec';
         
         const response = await fetch(SCRIPT_URL, {
