@@ -4,8 +4,7 @@ const answers = {
     q2: null,
     q3: null,
     q4: null,
-    q5: null,
-    q6: null
+    q5: null
 };
 
 let calculatedStone = '';
@@ -52,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Kontrola, či sú všetky otázky zodpovedané
 function checkAllAnswered() {
     const submitBtn = document.getElementById('submitBtn');
-    // Kontrola všetkých 6 otázok
-    const allAnswered = answers.q1 && answers.q2 && answers.q3 && answers.q4 && answers.q5 && answers.q6;
+    // Kontrola všetkých 5 otázok
+    const allAnswered = answers.q1 && answers.q2 && answers.q3 && answers.q4 && answers.q5;
     submitBtn.disabled = !allAnswered;
 }
 
@@ -127,13 +126,8 @@ function calculateResult() {
         return;
     }
 
-    // Ak žiadna kombinácia nepasuje, použi intuitívny výber (q6)
-    if (answers.q6) {
-        calculatedStone = answers.q6;
-    } else {
-        // Fallback - default diamant
-        calculatedStone = 'diamant';
-    }
+    // Ak žiadna kombinácia nepasuje, použiť default
+    calculatedStone = 'diamant';
 }
 
 // Zobrazenie formulára pre kontaktné údaje
@@ -169,8 +163,7 @@ async function submitToDatabase() {
         q2: answers.q2,
         q3: answers.q3,
         q4: answers.q4,
-        q5: answers.q5,
-        q6: answers.q6
+        q5: answers.q5
     };
 
     try {
