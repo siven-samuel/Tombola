@@ -233,7 +233,7 @@ async function submitToDatabase() {
 
     try {
         // Google Apps Script Web App URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPb4RWxWgn0NG8EzxJ0JzfsoPvVDOrrk-3aVF4XU99fhg0qJISGuYZzIkwntPsX5vf/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbpITTLWVtyvZuawCT4rIPfCvc6UjpdVtICLa9PO_qijsdAw7wi1Dx4G9DK719PvaT/exec';
         
         // Použitie no-cors režimu pre Google Apps Script (obíde CORS problém)
         fetch(SCRIPT_URL, {
