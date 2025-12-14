@@ -168,7 +168,7 @@ async function submitToDatabase() {
 
     try {
         // Google Apps Script Web App URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMUPzA2fEwwfJ1WtknpJZegOMCTH6T1eximZ3CCVE0WV1nHXW0dSoi5ZmfesektAHb/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPb4RWxWgn0NG8EzxJ0JzfsoPvVDOrrk-3aVF4XU99fhg0qJISGuYZzIkwntPsX5vf/exec';
         
         // Použitie FormData pre správne odoslanie do Google Apps Script
         const formData = new FormData();
