@@ -21,8 +21,15 @@ function doPost(e) {
       sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     }
     
-    // Parsuj JSON dáta
-    var data = JSON.parse(e.postData.contents);
+    // Parsuj JSON dáta - môže prísť ako parameter alebo v postData
+    var data;
+    if (e.parameter && e.parameter.data) {
+      data = JSON.parse(e.parameter.data);
+    } else if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else {
+      throw new Error('Žiadne dáta neboli prijaté');
+    }
     
     // Vytvor časovú pečiatku
     var timestamp = new Date().toLocaleString('sk-SK', {

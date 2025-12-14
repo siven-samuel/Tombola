@@ -168,19 +168,22 @@ async function submitToDatabase() {
 
     try {
         // Google Apps Script Web App URL
-        // DÔLEŽITÉ: Po nasadení nového scriptu z google-apps-script.gs, vlož sem novú URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMUPzA2fEwwfJ1WtknpJZegOMCTH6T1eximZ3CCVE0WV1nHXW0dSoi5ZmfesektAHb/exec';
         
-        const response = await fetch(SCRIPT_URL, {
+        // Použitie FormData pre správne odoslanie do Google Apps Script
+        const formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+        
+        fetch(SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+            body: formData
+        }).then(response => {
+            console.log('Dáta odoslané!');
+        }).catch(error => {
+            console.log('Fetch dokončený');
         });
 
-        console.log('Dáta úspešne odoslané!');
+        // Zobraz výsledok ihneď (nemusíme čakať na odpoveď)
         showResult(calculatedStone, userName, userEmail);
         
     } catch (error) {
